@@ -2101,11 +2101,11 @@ coroutine.wrap(function()
 while game:GetService("RunService").Heartbeat:wait() do
     if mf then
         for i,g in pairs(workspace.Live:GetChildren()) do
-    if g:IsA("Model") and g:FindFirstChildOfClass("Humanoid") and g.Humanoid.Health > 0 and string.match(getgenv().currentOption,g.Name) then
+    if g:IsA("Model") and g:FindFirstChildOfClass("Humanoid") and g.Humanoid.Health > 0 and string.match(getgenv().Selected,g.Name) then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = g.Torso.CFrame * CFrame.new(0,-7,0)*CFrame.Angles(90,0,0)
         game:GetService("ReplicatedStorage").RemoteEvents.BladeCombatRemote:FireServer(false,nil,nil)
     else
-        continue
+        
     end 
 end
 end
@@ -2149,16 +2149,18 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
         while wait() do
             if aq then
             if getgenv().Selected == "Bandit" then
-        quest1 = game:GetService("ReplicatedStorage").Quests["Defeat 10 Bandits"]
-        game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
+            if game:GetService("ReplicatedStorage").Quests["Defeat 10 Bandits"].Progress <= 0 then
+            quest1 = game:GetService("ReplicatedStorage").Quests["Defeat 10 Bandits"]
+            game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
             elseif getgenv().Selected == "Agni's Minion" then
                 quest2 = game:GetService("ReplicatedStorage").Quests["Defeat 9 of Agni's Minions"]
-        game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
+            game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
             end
         end
-    end
-        end)()
-		
+            end
+        end 
+end)()
+
         local Switch = Tab:AddSwitch("Auto Quest", function(bool)  
            aq = bool
             end)
