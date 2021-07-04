@@ -2029,6 +2029,7 @@ do
 
 df = false
 mf = false
+aq = false
 
 
 coroutine.wrap(
@@ -2117,7 +2118,7 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
 	
 	local Window = library:AddWindow("Project XL", {
 		main_color = Color3.fromRGB(255, 0, 93),
-		min_size = Vector2.new(500, 500),
+		min_size = Vector2.new(500, 450),
 		toggle_key = Enum.KeyCode.RightShift,
 		can_resize = true,
 	})
@@ -2128,11 +2129,12 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
 
 	do
   
-	local Dropdown = Tab:AddDropdown("Dropdown", function(object)
+	local Dropdown = Tab:AddDropdown("Mob", function(object)
 		getgenv().Selected = object
 		end)
 
 		
+
 		local mob1 = Dropdown:Add("Agni's Minion")
 		local mob2 = Dropdown:Add("Agni's Overseer")
 		local mob3 = Dropdown:Add("Bandit")
@@ -2142,18 +2144,34 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
 		local mob7 = Dropdown:Add("Lars' Overseer")
 		local mob8 = Dropdown:Add("Rahgan's Minion")
 		local mob9 = Dropdown:Add("Rahgan's Overseer")
+
+        coroutine.wrap(function()
+        while wait() do
+            if aq then
+            if getgenv().Selected == "Bandit" then
+        quest1 = game:GetService("ReplicatedStorage").Quests["Defeat 10 Bandits"]
+        game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
+            elseif getgenv().Selected == "Agni's Minion" then
+                quest2 = game:GetService("ReplicatedStorage").Quests["Defeat 9 of Agni's Minions"]
+        game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
+        end)()
 		
-
-
+        local Switch = Tab:AddSwitch("Auto Quest", function(bool)  
+           aq = bool
+            end)
+        
+        
 
 		local Switch = Tab:AddSwitch("Farm Mob", function(bool)  
 		mf = bool
 		end)
-
+		
         local Switch = Tab:AddSwitch("Farm Dummy", function(bool)
             df = bool
         end)
 
+		
+		
 
 	
 
