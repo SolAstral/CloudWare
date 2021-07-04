@@ -2026,10 +2026,93 @@ end
 
 
 do
-	
-	df = false
+
+df = false
 mf = false
 
+
+coroutine.wrap(
+    function()
+        while game:GetService("RunService").Heartbeat:wait() do
+            pcall(
+                function()
+                    if df then
+                        for _, v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                            if v:IsA("Tool") then
+                                v.Parent = game.Players.LocalPlayer.Character
+                            end
+                        end
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+                            CFrame.new(
+                            -1649.62415,
+                            327.78299,
+                            3116.66016,
+                            -0.349707335,
+                            -0.167351991,
+                            -0.921790719,
+                            0.167851388,
+                            0.956803501,
+                            -0.237387761,
+                            0.921699882,
+                            -0.237740085,
+                            -0.306510955
+                        )
+                        for i = 1, #mobs do
+                            local v = mobs[i]
+                            if not v:IsA("Folder") then
+                                if player:DistanceFromCharacter(v.HumanoidRootPart.Position) < 40 then
+                                    game:GetService("ReplicatedStorage").RemoteEvents.BladeCombatRemote:FireServer(
+                                        true,
+                                        game:GetService("Workspace").Live["Training dummy"].HumanoidRootPart.CFrame,
+                                        game:GetService("Workspace").Live["Training dummy"].HumanoidRootPart.CFrame
+                                    )
+                                end
+                            end
+                        end
+                    end
+                end
+            )
+        end
+    end
+)()
+
+coroutine.wrap(
+    function()
+        while wait() do
+            if mf then
+                for _, v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                    if v:IsA("Tool") then
+                        v.Parent = game.Players.LocalPlayer.Character
+                    end
+                end
+            end
+        end
+end)()
+
+coroutine.wrap(
+    function()
+        while game:GetService("RunService").RenderStepped:Wait() do
+            if mf then
+            game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+        end
+    end
+end
+)()
+
+coroutine.wrap(function()
+while game:GetService("RunService").Heartbeat:wait() do
+    if mf then
+        for i,g in pairs(workspace.Live:GetChildren()) do
+    if g:IsA("Model") and g:FindFirstChildOfClass("Humanoid") and g.Humanoid.Health > 0 and string.match(getgenv().currentOption,g.Name) then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = g.Torso.CFrame * CFrame.new(0,-7,0)*CFrame.Angles(90,0,0)
+        game:GetService("ReplicatedStorage").RemoteEvents.BladeCombatRemote:FireServer(false,nil,nil)
+    else
+        continue
+    end
+end
+end
+end
+end)()
 
 
 local player = game.Players.LocalPlayer
@@ -2066,9 +2149,13 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
 
 
 
-		local Switch = Tab:AddSwitch("Farm Mobs", function(bool)
-			
+		local Switch = Tab:AddSwitch("Farm Mob", function(bool)  
+		mf = bool
 		end)
+
+        local Switch = Tab:AddSwitch("Farm Dummy", function(bool)
+            df = bool
+        end)
 
 
 	
