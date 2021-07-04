@@ -2022,7 +2022,26 @@ function library:AddWindow(title, options)
 	return window_data, Window
 end
 
-do -- Example UI
+df = false
+mf = false
+
+mobss = {
+    "Agni's Minion",
+    "Agni's Overseer",
+    "Bandit",
+    "CrimsonMikami",
+    "KiddStan",
+    "Lars' Minion",
+    "Lars' Overseer",
+    "Rahgan's Minion",
+    "Rahgan's Overseer"
+}
+
+local player = game.Players.LocalPlayer
+local mobs = game:GetService("Workspace").Live:GetChildren()
+
+
+do
 	local Window = library:AddWindow("Project XL", {
 		main_color = Color3.fromRGB(255, 0, 93),
 		min_size = Vector2.new(500, 500),
@@ -2037,10 +2056,10 @@ do -- Example UI
 	do
   
 	local Dropdown = Tab:AddDropdown("Dropdown", function(object)
-			print(object)
+			
 		end)
 		
-    Dropdown:Add(mobss)
+    local e = Dropdown:Add(mobss)
 
 		local Switch = Tab:AddSwitch("Farm Mobs", function(bool)
 			
