@@ -2025,7 +2025,7 @@ end
 do -- Example UI
 	local Window = library:AddWindow("Project XL", {
 		main_color = Color3.fromRGB(255, 0, 93),
-		min_size = Vector2.new(500, 450),
+		min_size = Vector2.new(500, 500),
 		toggle_key = Enum.KeyCode.RightShift,
 		can_resize = true,
 	})
