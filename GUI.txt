@@ -2100,14 +2100,16 @@ end
 coroutine.wrap(function()
 while game:GetService("RunService").Heartbeat:wait() do
     if mf then
+		pcall(function()
         for i,g in pairs(workspace.Live:GetChildren()) do
     if g:IsA("Model") and g:FindFirstChildOfClass("Humanoid") and g.Humanoid.Health > 0 and string.match(getgenv().Selected,g.Name) then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = g.Torso.CFrame * CFrame.new(0,-7,0)*CFrame.Angles(90,0,0)
         game:GetService("ReplicatedStorage").RemoteEvents.BladeCombatRemote:FireServer(false,nil,nil)
     else
-        
+        continue 
     end 
 end
+end)
 end
 end
 end)()
