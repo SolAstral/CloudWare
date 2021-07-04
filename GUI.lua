@@ -2030,17 +2030,7 @@ do
 	df = false
 mf = false
 
-mobss = {
-    "Agni's Minion",
-    "Agni's Overseer",
-    "Bandit",
-    "CrimsonMikami",
-    "KiddStan",
-    "Lars' Minion",
-    "Lars' Overseer",
-    "Rahgan's Minion",
-    "Rahgan's Overseer"
-}
+
 
 local player = game.Players.LocalPlayer
 local mobs = game:GetService("Workspace").Live:GetChildren()
@@ -2062,7 +2052,17 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
 			
 		end)
 		
-    local eee = Dropdown:Add(mobss)
+    local mobss = Dropdown:Add{
+    "Agni's Minion",
+    "Agni's Overseer",
+    "Bandit",
+    "CrimsonMikami",
+    "KiddStan",
+    "Lars' Minion",
+    "Lars' Overseer",
+    "Rahgan's Minion",
+    "Rahgan's Overseer"
+}
 
 
 
