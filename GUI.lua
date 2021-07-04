@@ -2151,7 +2151,7 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
         while wait() do
             if aq then
             if getgenv().Selected == "Bandit" then
-            if game:GetService("ReplicatedStorage").Quests["Defeat 10 Bandits"].Progress <= 0 then
+            if game:GetService("ReplicatedStorage").Quests["Defeat 10 Bandits"].Progress.Value <= 0 then
             quest1 = game:GetService("ReplicatedStorage").Quests["Defeat 10 Bandits"]
             game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest1)
             elseif getgenv().Selected == "Agni's Minion" then
