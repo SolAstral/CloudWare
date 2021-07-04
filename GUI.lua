@@ -2057,20 +2057,17 @@ coroutine.wrap(
                             -0.237740085,
                             -0.306510955
                         )
-                        for i = 1, #mobs do
-                            local v = mobs[i]
-                            if not v:IsA("Folder") then
-                                if player:DistanceFromCharacter(v.HumanoidRootPart.Position) < 40 then
+        
                                     game:GetService("ReplicatedStorage").RemoteEvents.BladeCombatRemote:FireServer(
                                         true,
-                                        game:GetService("Workspace").Live["Training dummy"].HumanoidRootPart.CFrame,
-                                        game:GetService("Workspace").Live["Training dummy"].HumanoidRootPart.CFrame
+                                        nil,
+					nil
                                     )
                                 end
                             end
-                        end
-                    end
-                end
+                        
+                    
+                
             )
         end
     end
@@ -2108,7 +2105,7 @@ while game:GetService("RunService").Heartbeat:wait() do
         game:GetService("ReplicatedStorage").RemoteEvents.BladeCombatRemote:FireServer(false,nil,nil)
     else
         continue
-    end
+    end 
 end
 end
 end
