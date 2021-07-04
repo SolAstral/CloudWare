@@ -2154,6 +2154,9 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
             elseif getgenv().Selected == "Agni's Minion" then
                 quest2 = game:GetService("ReplicatedStorage").Quests["Defeat 9 of Agni's Minions"]
         game:GetService("ReplicatedStorage").RemoteEvents.ChangeQuestRemote:FireServer(quest2)
+            end
+        end
+    end
         end)()
 		
         local Switch = Tab:AddSwitch("Auto Quest", function(bool)  
