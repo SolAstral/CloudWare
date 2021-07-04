@@ -2022,7 +2022,12 @@ function library:AddWindow(title, options)
 	return window_data, Window
 end
 
-df = false
+
+
+
+do
+	
+	df = false
 mf = false
 
 mobss = {
@@ -2039,9 +2044,7 @@ mobss = {
 
 local player = game.Players.LocalPlayer
 local mobs = game:GetService("Workspace").Live:GetChildren()
-
-
-do
+	
 	local Window = library:AddWindow("Project XL", {
 		main_color = Color3.fromRGB(255, 0, 93),
 		min_size = Vector2.new(500, 500),
@@ -2059,7 +2062,9 @@ do
 			
 		end)
 		
-    local e = Dropdown:Add(mobss)
+    local eee = Dropdown:Add(mobss)
+
+
 
 		local Switch = Tab:AddSwitch("Farm Mobs", function(bool)
 			
