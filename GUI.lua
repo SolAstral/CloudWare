@@ -2049,20 +2049,20 @@ local mobs = game:GetService("Workspace").Live:GetChildren()
 	do
   
 	local Dropdown = Tab:AddDropdown("Dropdown", function(object)
-			
+		getgenv().Selected = object
 		end)
+
 		
-    local mobss = Dropdown:Add{
-    "Agni's Minion",
-    "Agni's Overseer",
-    "Bandit",
-    "CrimsonMikami",
-    "KiddStan",
-    "Lars' Minion",
-    "Lars' Overseer",
-    "Rahgan's Minion",
-    "Rahgan's Overseer"
-}
+		local mob1 = Dropdown:Add("Agni's Minion")
+		local mob2 = Dropdown:Add("Agni's Overseer")
+		local mob3 = Dropdown:Add("Bandit")
+		local mob4 = Dropdown:Add("CrimsonMikami")
+		local mob5 = Dropdown:Add("KiddStan")
+		local mob6 = Dropdown:Add("Lars' Minion")
+		local mob7 = Dropdown:Add("Lars' Overseer")
+		local mob8 = Dropdown:Add("Rahgan's Minion")
+		local mob9 = Dropdown:Add("Rahgan's Overseer")
+		
 
 
 
